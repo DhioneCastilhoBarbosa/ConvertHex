@@ -27,62 +27,31 @@ namespace convetHEx
 
 
             int decValue;
-            int dec;
             int index = 0;
             string caratcter = string.Empty;
-            string Hextest =
-            "23;0D;03;14;03;1F;10;2C;2B;00;00;00;00;0D;" + // tipo 3
-            "23;2D;01;14;03;1F;02;2E;12;00;00;00;00;00;00;00;00;00;3C;1C;C6;00;3C;1C;C6;00;00;00;00;00;00;00;00;00;3C;1C;C6;1C;23;C2;44;00;00;00;01;2D;" + //tipo 1
-            "23;2D;01;14;03;1F;02;2E;17;00;00;00;00;00;00;00;00;00;3C;1C;C6;00;3C;1C;C6;00;00;00;00;00;00;A0;3F;00;3C;1C;C6;1C;23;C2;44;00;00;00;02;2D;" +
-            "23;19;02;14;03;1F;10;29;34;00;00;00;00;00;00;00;00;00;00;00;00;00;00;00;00;19;" + //tipo 2
-            "23;2D;01;14;03;1F;02;2E;1C;00;00;00;00;00;00;00;00;00;3C;1C;C6;00;3C;1C;C6;00;00;00;00;00;00;00;00;00;3C;1C;C6;1C;23;C2;44;00;00;00;03;2D;" +
-            "23;2D;01;14;03;1F;02;2E;20;00;00;00;00;00;00;00;00;00;3C;1C;C6;00;3C;1C;C6;00;00;00;00;00;00;00;00;00;3C;1C;C6;1C;23;C2;44;00;00;00;04;2D;23"; // final tem que acrecentar #
+            
 
-            // Console.WriteLine(Hextest);
-            //  Console.WriteLine("completa");
-            // Console.WriteLine();
+
+            string Bruta5 = "54;"+
+                            "23;2D;01;14;04;06;0E;17;2B;00;00;00;00;00;00;00;00;70;A2;D1;41;79;AF;80;42;00;00;00;00;00;00;00;00;00;3C;1C;C6;1C;23;C2;44;00;00;00;00;2D;" +
+                            "23;19;02;14;04;06;0E;17;31;00;00;00;00;00;00;A0;BF;00;00;00;00;00;00;00;00;19;" +
+                            "23;0D;03;14;04;06;0E;17;36;00;00;00;00;0D;" +
+                            "45;52;4D;49;4E;41;4E;44;4F;";
 
 
 
-            string Bruta0 = "53;54;41;52;54;" +
-                            "23;2D;01;14;03;1F;02;2E;12;00;00;00;00;00;00;00;00;00;3C;1C;C6;00;3C;1C;C6;00;00;00;00;00;00;00;00;00;3C;1C;C6;1C;23;C2;44;00;00;00;00;2D;" +
-                            "23;2D;01;14;03;1F;02;2E;17;00;00;00;00;00;00;00;00;00;3C;1C;C6;00;3C;1C;C6;00;00;00;00;00;00;A0;3F;00;3C;1C;C6;1C;23;C2;44;00;00;00;00;2D;" +
-                            "23;2D;01;14;03;1F;02;2E;1C;00;00;00;00;00;00;00;00;00;3C;1C;C6;00;3C;1C;C6;00;00;00;00;00;00;00;00;00;3C;1C;C6;1C;23;C2;44;00;00;00;00;2D;" +
-                            "23;2D;01;14;03;1F;02;2E;20;00;00;00;00;00;00;00;00;00;3C;1C;C6;00;3C;1C;C6;00;00;00;00;00;00;00;00;00;3C;1C;C6;1C;23;C2;44;00;00;00;00;2D;" +
-                            "46;49;4E;41;4C;";
+            OrganizaString(Bruta5);
 
-
-
-            string Bruta1 = "46;49;4E;41;4C;1C;C6;1C;23;C2;44;00;00;00;00;2D;" +
-                            "23;2D;01;14;03;1F;02;2E;12;00;00;00;00;00;00;00;00;00;3C;1C;C6;00;3C;1C;C6;00;00;00;00;00;00;00;00;00;3C;1C;C6;1C;23;C2;44;00;00;00;00;2D;" +
-                            "23;2D;01;14;03;1F;02;2E;17;00;00;00;00;00;00;00;00;00;3C;1C;C6;00;3C;1C;C6;00;00;00;00;00;00;A0;3F;00;3C;1C;C6;1C;23;C2;44;00;00;00;00;2D;" +
-                            "23;2D;01;14;03;1F;02;2E;1C;00;00;00;00;00;00;00;00;00;3C;1C;C6;00;3C;1C;C6;00;00;00;00;00;00;00;00;00;3C;1C;C6;1C;23;C2;44;00;00;00;00;2D;" +
-                            "23;2D;01;14;03;1F;02;2E;20;00;00;00;00;00;00;00;00;00;3C;1C;C6;00;3C;1C;C6;00;00;00;00;00;00;00;00;00;3C;1C;C6;1C;23;C2;44;00;00;00;00;2D;";
-
-            string Bruta2 =
-                          "23;2D;01;14;03;1F;02;2E;12;00;00;00;00;00;00;00;00;00;3C;1C;C6;00;3C;1C;C6;00;00;00;00;00;00;00;00;00;3C;1C;C6;1C;23;C2;44;00;00;00;04;2D;" +
-                           "46;49;4E;41;4C;" +
-                          "23;2D;01;14;03;1F;02;2E;17;00;00;00;00;00;00;00;00;00;3C;1C;C6;00;3C;1C;C6;00;00;00;00;00;00;A0;3F;00;3C;1C;C6;1C;23;C2;44;00;00;00;01;2D;" +
-                          "23;2D;01;14;03;1F;02;2E;1C;00;00;00;00;00;00;00;00;00;3C;1C;C6;00;3C;1C;C6;00;00;00;00;00;00;00;00;00;3C;1C;C6;1C;23;C2;44;00;00;00;02;2D;" +
-                          "23;2D;01;14;03;1F;02;2E;20;00;00;00;00;00;00;00;00;00;3C;1C;C6;00;3C;1C;C6;00;00;00;00;00;00;00;00;00;3C;1C;C6;1C;23;C2;44;00;00;00;03;2D;";
-
-
-            string Bruta3 = "41;4C;" + // "46;49;4E;41;4C;"
-                         "23;2D;01;14;03;1F;02;2E;12;00;00;00;00;00;00;00;00;00;3C;1C;C6;00;3C;1C;C6;00;00;00;00;00;00;00;00;00;3C;1C;C6;1C;23;C2;44;00;00;00;00;2D;" +
-                         "23;2D;01;14;03;1F;02;2E;17;00;00;00;00;00;00;00;00;00;3C;1C;C6;00;3C;1C;C6;00;00;00;00;00;00;A0;3F;00;3C;1C;C6;1C;23;C2;44;00;00;00;00;2D;" +
-                         "23;2D;01;14;03;1F;02;2E;1C;00;00;00;00;00;00;00;00;00;3C;1C;C6;00;3C;1C;C6;00;00;00;00;00;00;00;00;00;3C;1C;C6;1C;23;C2;44;00;00;00;00;2D;" +
-                         "23;2D;01;14;03;1F;02;2E;20;00;00;00;00;00;00;00;00;00;3C;1C;C6;00;3C;1C;C6;00;00;00;00;00;00;00;00;00;3C;1C;C6;1C;23;C2;44;00;00;00;00;2D;46;49;4E;";
-
-            OrganizaString(Bruta3);
+           
 
             void OrganizaString(string Bruta)
             {
                 Console.WriteLine("entrei na função");
 
-                if (Bruta.Contains("53;54;41;52;54;") && Bruta.Contains("46;49;4E;41;4C;"))
+                if (Bruta.Contains("53;54;41;52;54;") && Bruta.Contains("54;45;52;4D;49;4E;41;4E;44;4F;"))
                 {
                     Bruta = Bruta.Replace("53;54;41;52;54;", "");
-                    Bruta = Bruta.Replace("46;49;4E;41;4C;", "/");
+                    Bruta = Bruta.Replace("54;45;52;4D;49;4E;41;4E;44;4F;", "/");
 
                     String[] Aux = Bruta.Split('/');
 
@@ -92,12 +61,12 @@ namespace convetHEx
                     Console.WriteLine(Bruta);
                     RXPronta = Bruta;
                 }
-                else if (Bruta.Contains("46;49;4E;41;4C;"))
+                else if (Bruta.Contains("54;45;52;4D;49;4E;41;4E;44;4F;"))
                 {
                     Console.WriteLine("Tem final apenas");
 
 
-                    Bruta = Bruta.Replace("46;49;4E;41;4C;", "/");
+                    Bruta = Bruta.Replace("54;45;52;4D;49;4E;41;4E;44;4F;", "/");
 
                     String[] Aux = Bruta.Split('/');
                     Bruta = Aux[1] + Aux[0] + "23";
@@ -176,11 +145,12 @@ namespace convetHEx
                     }
 
                 }
-                else if (Bruta.Contains("49;4E;41;4C"))
+                else if (Bruta.Contains("54;45;52;4D;49;4E;41;4E;44") && Bruta.Substring(Bruta.Length-3)=="4F;")
                 {
-                    Console.WriteLine("Tem apenas INAL ");
+                    Console.WriteLine("Tem apenas TERMINAND ");
 
-                    Bruta = Bruta.Replace("49;4E;41;4C", "/");
+                    Bruta = Bruta.Substring(0, Bruta.Length - 3);
+                    Bruta = Bruta.Replace("54;45;52;4D;49;4E;41;4E;44", "/");
 
 
                     Console.WriteLine(Bruta);
@@ -189,7 +159,7 @@ namespace convetHEx
                     String[] Aux = Bruta.Split('/');
                     Bruta = Aux[1] + "/" + Aux[0];
 
-                    Bruta = Bruta.Replace("/", "49;4E;41;4C");
+                    Bruta = Bruta.Replace("/", "54;45;52;4D;49;4E;41;4E;44;4F;");
 
                     Bruta = Bruta.Remove(0, 1);
                     Console.WriteLine(Bruta);
@@ -198,12 +168,38 @@ namespace convetHEx
                     OrganizaString(Bruta);
 
                 }
-                else if (Bruta.Contains("4E;41;4C"))
+                else if (Bruta.Contains("54;45;52;4D;49;4E;41;4E") && Bruta.Substring(Bruta.Length - 6) =="44;4F;")
+                 {
+                     Console.WriteLine("Tem apenas TERMINAN ");
+
+                     Bruta = Bruta.Substring(0, Bruta.Length - 6);
+                     Bruta = Bruta.Replace("54;45;52;4D;49;4E;41;4E", "/");
+
+                     Console.WriteLine(Bruta);
+
+                     Console.WriteLine();
+
+                     String[] Aux = Bruta.Split('/');
+
+                     Bruta = Aux[1] + "/" + Aux[0];
+
+                     Bruta = Bruta.Replace("/", "54;45;52;4D;49;4E;41;4E;44;4F;");
+
+                     Bruta = Bruta.Remove(0, 1);
+
+                     Console.WriteLine(Bruta);
+
+                     Console.WriteLine();
+
+                     OrganizaString(Bruta);
+
+                 }
+                else if (Bruta.Contains("54;45;52;4D;49;4E;41") && Bruta.Substring(Bruta.Length - 9) == "4E;44;4F;") 
                 {
-                    Console.WriteLine("Tem apenas NAL ");
+                    Console.WriteLine("Tem apenas TERMINA ");
 
-
-                    Bruta = Bruta.Replace("4E;41;4C", "/");
+                    Bruta = Bruta.Substring(0, Bruta.Length - 9);
+                    Bruta = Bruta.Replace("54;45;52;4D;49;4E;41", "/");
 
                     Console.WriteLine(Bruta);
 
@@ -213,23 +209,22 @@ namespace convetHEx
 
                     Bruta = Aux[1] + "/" + Aux[0];
 
-                    Bruta = Bruta.Replace("/", "4E;41;4C");
-
-                    Bruta = Bruta.Remove(0, 1);
+                    Bruta = Bruta.Replace("/", "54;45;52;4D;49;4E;41;4E;44;4F;");
 
                     Console.WriteLine(Bruta);
 
                     Console.WriteLine();
-
+                    Bruta = Bruta.Remove(0, 1);
                     OrganizaString(Bruta);
 
                 }
-                else if (Bruta.Contains("46;49;4E"))
+                 else if (Bruta.Contains("54;45;52;4D;49;4E") && Bruta.Substring(Bruta.Length - 12) == "41;4E;44;4F;")
                 {
-                    Console.WriteLine("Tem apenas FIN ");
+                    Console.WriteLine("Tem apenas TERMIN");
 
+                    Bruta = Bruta.Substring(0, Bruta.Length - 12);
 
-                    Bruta = Bruta.Replace("46;49;4E", "/");
+                    Bruta = Bruta.Replace("54;45;52;4D;49;4E", "/");
 
                     Console.WriteLine(Bruta);
 
@@ -239,7 +234,7 @@ namespace convetHEx
 
                     Bruta = Aux[1] + "/" + Aux[0];
 
-                    Bruta = Bruta.Replace("/", "46;49;4E;");
+                    Bruta = Bruta.Replace("/", "54;45;52;4D;49;4E;41;4E;44;4F;");
 
                     Console.WriteLine(Bruta);
 
@@ -248,6 +243,132 @@ namespace convetHEx
                     OrganizaString(Bruta);
 
                 }
+                else if (Bruta.Contains("54;45;52;4D;49") && Bruta.Substring(Bruta.Length - 15) == "4E;41;4E;44;4F;")
+                {
+                    Console.WriteLine("Tem apenas TERMI");
+
+                    Bruta = Bruta.Substring(0, Bruta.Length - 15);
+
+                    Bruta = Bruta.Replace("54;45;52;4D;49", "/");
+
+                    Console.WriteLine(Bruta);
+
+                    Console.WriteLine();
+
+                    String[] Aux = Bruta.Split('/');
+
+                    Bruta = Aux[1] + "/" + Aux[0];
+
+                    Bruta = Bruta.Replace("/", "54;45;52;4D;49;4E;41;4E;44;4F;");
+
+                    Console.WriteLine(Bruta);
+
+                    Console.WriteLine();
+                    Bruta = Bruta.Remove(0, 1);
+                    OrganizaString(Bruta);
+
+                }
+                else if (Bruta.Contains("54;45;52;4D") && Bruta.Substring(Bruta.Length - 18) == "49;4E;41;4E;44;4F;")
+                {
+                    Console.WriteLine("Tem apenas TERM");
+
+                    Bruta = Bruta.Substring(0, Bruta.Length - 18);
+
+                    Bruta = Bruta.Replace("54;45;52;4D", "/");
+
+                    Console.WriteLine(Bruta);
+
+                    Console.WriteLine();
+
+                    String[] Aux = Bruta.Split('/');
+
+                    Bruta = Aux[1] + "/" + Aux[0];
+
+                    Bruta = Bruta.Replace("/", "54;45;52;4D;49;4E;41;4E;44;4F;");
+
+                    Console.WriteLine(Bruta);
+
+                    Console.WriteLine();
+                    Bruta = Bruta.Remove(0, 1);
+                    OrganizaString(Bruta);
+
+                }
+                else if (Bruta.Contains("54;45;52") && Bruta.Substring(Bruta.Length - 21) == "4D;49;4E;41;4E;44;4F;")
+                {
+                    Console.WriteLine("Tem apenas TER");
+
+                    Bruta = Bruta.Substring(0, Bruta.Length - 21);
+
+                    Bruta = Bruta.Replace("54;45;52", "/");
+
+                    Console.WriteLine(Bruta);
+
+                    Console.WriteLine();
+
+                    String[] Aux = Bruta.Split('/');
+
+                    Bruta = Aux[1] + "/" + Aux[0];
+
+                    Bruta = Bruta.Replace("/", "54;45;52;4D;49;4E;41;4E;44;4F;");
+
+                    Console.WriteLine(Bruta);
+
+                    Console.WriteLine();
+                    Bruta = Bruta.Remove(0, 1);
+                    OrganizaString(Bruta);
+
+                }
+                else if (Bruta.Contains("54;45") && Bruta.Substring(Bruta.Length - 24) == "52;4D;49;4E;41;4E;44;4F;")
+                {
+                    Console.WriteLine("Tem apenas TE");
+
+                    Bruta = Bruta.Remove(0,6);
+
+                    Bruta = Bruta.Replace("52;4D;49;4E;41;4E;44;4F", "/");
+
+                    Console.WriteLine(Bruta);
+
+                    Console.WriteLine();
+
+                    String[] Aux = Bruta.Split('/');
+
+                    Bruta = Aux[1] + "/" + Aux[0];
+
+                    Bruta = Bruta.Replace("/", "54;45;52;4D;49;4E;41;4E;44;4F;");
+
+                    Console.WriteLine(Bruta);
+
+                    Console.WriteLine();
+                    Bruta = Bruta.Remove(0, 1);
+                    OrganizaString(Bruta);
+
+                }
+                else if (Bruta.Contains("54") && Bruta.Substring(Bruta.Length - 27) == "45;52;4D;49;4E;41;4E;44;4F;")
+                {
+                    Console.WriteLine("Tem apenas T");
+
+                    Bruta = Bruta.Remove(0, 3);
+
+                    Bruta = Bruta.Replace("45;52;4D;49;4E;41;4E;44;4F", "/");
+
+                    Console.WriteLine(Bruta);
+
+                    Console.WriteLine();
+
+                    String[] Aux = Bruta.Split('/');
+
+                    Bruta = Aux[1] + "/" + Aux[0];
+
+                    Bruta = Bruta.Replace("/", "54;45;52;4D;49;4E;41;4E;44;4F;");
+
+                    Console.WriteLine(Bruta);
+
+                    Console.WriteLine();
+                    Bruta = Bruta.Remove(0, 1);
+                    OrganizaString(Bruta);
+
+                }
+
             }
 
             //Hextest = Hextest.Replace("53;54;41;52;54;", "Start ");
@@ -354,7 +475,7 @@ namespace convetHEx
                 void Relatorio1(int Inicial, int Final)
                 {
 
-                    // Inicial = Inicial + 2;
+                    
                     Final = Final + 1;
 
 
@@ -367,8 +488,7 @@ namespace convetHEx
                     caratcter += linha;
                     RelatorioBruto1 = linha.Remove(0, 9);
                     RelatorioBruto1 = RelatorioBruto1.Substring(0, RelatorioBruto1.Length - 4);
-                    // Console.WriteLine("Caracter = " + caratcter.Length);
-                    //Console.WriteLine("String = " + Hextest.Length);
+                    
 
 
                     String[] DadosConvert = RelatorioBruto1.Split(';');
@@ -484,18 +604,87 @@ namespace convetHEx
 
                     caratcter += linha;
                     RelatorioBruto2 += linha.Remove(0, 9);
-                    RelatorioBruto2 = RelatorioBruto2.Substring(0, RelatorioBruto2.Length - 4) + "\r\n";
+                    RelatorioBruto2 = RelatorioBruto2.Substring(0, RelatorioBruto2.Length - 4);
 
 
 
 
-                    //Console.WriteLine("Caracter = " + caratcter.Length);
-                    // Console.WriteLine("String = " + Hextest.Length);
+                    String[] DadosConvert = RelatorioBruto2.Split(';');
+
+                    string dataConvert = string.Empty;
+                    for (int i = 0; i < 3; i++)
+                    {
+                       
+                        int Data = int.Parse(DadosConvert[i], System.Globalization.NumberStyles.HexNumber);
+
+                        dataConvert += Data.ToString("00") + "-";
+                    }
+                    dataConvert = dataConvert.Substring(0, dataConvert.Length - 1);
+                    
+
+
+
+                    string HoraConvert = string.Empty;
+                    for (int i = 3; i < 6; i++)
+                    {
+                        
+                        int Hora = int.Parse(DadosConvert[i], System.Globalization.NumberStyles.HexNumber);
+
+                        HoraConvert += Hora.ToString("00") + ":";
+                    }
+                    HoraConvert = HoraConvert.Substring(0, HoraConvert.Length - 1);
+                    
+
+                    RelatorioParcial2 = dataConvert + ";" + HoraConvert + ";";
+
+                    string Dados = string.Empty;
+
+                    for (int i = 0; i < DadosConvert.Length; i++)
+                    {
+                        Dados += DadosConvert[i] + ";";
+
+                    }
+                    Dados = Dados.Remove(0, 18);
+
+                    ;
+
+
+                    string DadosSeparados = string.Empty;
+
+                    for (int i = 0; i < Dados.Length; i = i + 12)
+                    {
+                        DadosSeparados = Dados.Substring(i, 12);
+                       
+
+                        string hexOrdenado = string.Empty;
+                        string hexString = DadosSeparados;
+
+                        String[] bytes = hexString.Split(';');
+
+                        for (int x = 3; x >= 0; x--)
+                        {
+
+                            hexOrdenado += bytes[x];
+                        }
+
+                        uint num = uint.Parse(hexOrdenado, System.Globalization.NumberStyles.AllowHexSpecifier);
+                        byte[] floatVals = BitConverter.GetBytes(num);
+                        float f = BitConverter.ToSingle(floatVals, 0);
+
+                        RelatorioParcial2 += f + ";";
+
+
+
+                        
+                    }
+
+                    RelatorioFinal2 += RelatorioParcial2 + "\r\n";
+                    
 
 
                     if (caratcter.Length == RXPronta.Length - 2)
                     {
-                        //Console.WriteLine("Linha = " + linha);
+                        
                         linha = "";
 
 
@@ -504,7 +693,7 @@ namespace convetHEx
                     else
                     {
 
-                        // Console.WriteLine("Linha = " + linha);
+                        
                         linha = "";
                         scan(Final, RXPronta);
                     }
@@ -519,7 +708,7 @@ namespace convetHEx
                 void Relatorio3(int Inicial, int Final)
                 {
 
-                    // Inicial = Inicial + 2;
+                   
                     Final = Final + 1;
 
 
@@ -531,14 +720,79 @@ namespace convetHEx
 
                     caratcter += linha;
                     RelatorioBruto3 += linha.Remove(0, 9);
-                    RelatorioBruto3 = RelatorioBruto3.Substring(0, RelatorioBruto3.Length - 4) + "\r\n";
-                    // Console.WriteLine("Caracter = " + caratcter.Length);
-                    // Console.WriteLine("String = " + Hextest.Length);
+                    RelatorioBruto3 = RelatorioBruto3.Substring(0, RelatorioBruto3.Length - 4);
+
+                    String[] DadosConvert = RelatorioBruto3.Split(';');
+
+                    string dataConvert = string.Empty;
+                    for (int i = 0; i < 3; i++)
+                    {
+                       
+                        int Data = int.Parse(DadosConvert[i], System.Globalization.NumberStyles.HexNumber);
+
+                        dataConvert += Data.ToString("00") + "-";
+                    }
+                    dataConvert = dataConvert.Substring(0, dataConvert.Length - 1);
+                    
 
 
+
+                    string HoraConvert = string.Empty;
+                    for (int i = 3; i < 6; i++)
+                    {
+                        
+                        int Hora = int.Parse(DadosConvert[i], System.Globalization.NumberStyles.HexNumber);
+
+                        HoraConvert += Hora.ToString("00") + ":";
+                    }
+                    HoraConvert = HoraConvert.Substring(0, HoraConvert.Length - 1);
+                  
+
+                    RelatorioParcial3 = dataConvert + ";" + HoraConvert + ";";
+
+                    string Dados = string.Empty;
+
+                    for (int i = 0; i < DadosConvert.Length; i++)
+                    {
+                        Dados += DadosConvert[i] + ";";
+
+                    }
+                    Dados = Dados.Remove(0, 18);
+
+                    
+
+
+                    string DadosSeparados = string.Empty;
+
+                    for (int i = 0; i < Dados.Length; i = i + 12)
+                    {
+                        DadosSeparados = Dados.Substring(i, 12);
+                        
+
+                        string hexOrdenado = string.Empty;
+                        string hexString = DadosSeparados;
+
+                        String[] bytes = hexString.Split(';');
+
+                        for (int x = 3; x >= 0; x--)
+                        {
+
+                            hexOrdenado += bytes[x];
+                        }
+
+                        uint num = uint.Parse(hexOrdenado, System.Globalization.NumberStyles.AllowHexSpecifier);
+                        byte[] floatVals = BitConverter.GetBytes(num);
+                        float f = BitConverter.ToSingle(floatVals, 0);
+
+                        RelatorioParcial3 += f + ";";
+   
+                    }
+
+                    RelatorioFinal3 += RelatorioParcial3 + "\r\n";
+                    
                     if (caratcter.Length == RXPronta.Length - 2)
                     {
-                        //Console.WriteLine("Linha = " + linha);
+                        
                         linha = "";
 
                         RelatoriosBrtos();
@@ -546,7 +800,7 @@ namespace convetHEx
                     else
                     {
 
-                        // Console.WriteLine("Linha = " + linha);
+                        
                         linha = "";
                         scan(Final, RXPronta);
                     }
@@ -567,12 +821,12 @@ namespace convetHEx
 
                     Console.WriteLine("Relatorio-2: ");
                     Console.WriteLine();
-                    Console.WriteLine(RelatorioBruto2);
+                    Console.WriteLine(RelatorioFinal2);
 
 
                     Console.WriteLine("Relatorio-3: ");
                     Console.WriteLine();
-                    Console.WriteLine(RelatorioBruto3);
+                    Console.WriteLine(RelatorioFinal3);
                     Console.WriteLine("Scan total");
 
                 }
